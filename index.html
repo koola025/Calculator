@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Lab_04 Calculator</title>
+
+		<!-- CSS and javascript -->
+		<link rel="stylesheet" type="text/css" href="Calculator.css">
+		<script type = "text/javascript">
+			function clearNum() {
+				var text = document.getElementById("screen");
+				text.value = "";
+			} 
+			function displayNum(n) {
+				var text = document.getElementById("screen");
+				if (text.value === "Hello~") {
+					text.value = "";
+				}
+				text.value += n;
+				
+			}
+			
+			
+			function equal() {
+				var text = document.getElementById("screen");
+				if (text) {
+					try {
+    					eval(text.value); 
+					} catch (e) {
+    				if (e instanceof SyntaxError) {
+        				alert("error");
+    				} else {
+						throw( e );
+						
+    				}
+}					text.value = eval(text.value);
+					/*var out = eval(text.value);
+					if (typeof text !== "number") {
+						alert("error");
+					}
+					else {
+						text.val = out;
+					}*/
+				}
+				
+			}
+		</script>
+		
+		
+	</head>
+	<body style="background-color:gray;">
+		<div id="calculator">
+			<div>
+				<input type="text" class="display" id="screen" value="Hello~" readonly>
+			</div>
+			<table style="width:100%; table-layout:fixed ;" border="0" cellpadding="0">
+				<tr class="row">
+					<td><input type="button" value="C" class="btn btn3" onclick="clearNum()"></td>
+					<td><input type="button" value=")" class="btn btn3" onclick="displayNum(')')"></td>
+					<td><input type="button" value="(" class="btn btn3" onclick="displayNum('(')"></td>
+					<td><input type="button" value="÷" class="btn btn2" onclick="displayNum('/')"></td>
+				</tr>
+				<tr class="row">
+					<td><input type="button" value="7" class="btn" onclick="displayNum(7)"></td>
+					<td><input type="button" value="8" class="btn" onclick="displayNum(8)"></td>
+					<td><input type="button" value="9" class="btn" onclick="displayNum(9)"></td>
+					<td><input type="button" value="×" class="btn btn2" onclick="displayNum('*')"></td>
+				</tr>
+				<tr class="row">
+					<td><input type="button" value="4" class="btn" onclick="displayNum(4)"></td>
+					<td><input type="button" value="5" class="btn" onclick="displayNum(5)"></td>
+					<td><input type="button" value="6" class="btn" onclick="displayNum(6)"></td>
+					<td><input type="button" value="-" class="btn btn2" onclick="displayNum('-')"></td>
+				</tr>	
+				<tr class="row">
+					<td><input type="button" value="1" class="btn" onclick="displayNum(1)"></td>
+					<td><input type="button" value="2" class="btn" onclick="displayNum(2)"></td>
+					<td><input type="button" value="3" class="btn" onclick="displayNum(3)"></td>
+					<td><input type="button" value="+" class="btn btn2" onclick="displayNum('+')"></td>
+				</tr>
+				<tr class="row">
+					<td colspan=2><input type="button" value="0" class="btn" onclick="displayNum(0)" style="width:100%;"></td>
+					<td><input type="button" value="." class="btn" onclick="displayNum('.')"></td>
+					<td><input type="button" value="=" class="btn btn2" onclick="equal()"></td>
+				</tr>
+			</div>
+		</div>
+	</body>
+</html>
